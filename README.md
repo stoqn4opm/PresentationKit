@@ -1,5 +1,5 @@
 # PresentationKit
-![](https://img.shields.io/badge/version-1.0-brightgreen.svg)
+![](https://img.shields.io/badge/version-1.2-brightgreen.svg)
 
 PresentationKit is a micro iOS Dynamic Framework with the single purpose of presenting `UIViewController`'s, from places within your code where you don't have reference to app's view controller hierarchy. A nice example of use case of this library is from within other libraries that need to present an authentication flow and dismiss it on completion. 
 
@@ -26,3 +26,7 @@ For detailed instructions check the official Carthage guides [here](https://gith
 
 1. Download the project and build the shared target called `PresentationKit`
 2. Add the product in the list of "embed frameworks" list inside your project's target or create a work space with PresentationKit and your project and link directly the product of PresentationKit's target to your target "embed frameworks" list
+
+# Licence
+
+The framework is licensed under MIT licence. For more information see file `LICENCE`
