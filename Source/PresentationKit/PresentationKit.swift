@@ -99,7 +99,7 @@ extension RootViewController {
 extension Int {
     
     /// Tag used for distinguishing PresentationKit's window from all windows of the app.
-    static fileprivate var newWindowTag: Int { return 0xdeadBeef }
+    static fileprivate var newWindowTag: Int { return 0xdead }
 }
 
 extension UIWindow {
