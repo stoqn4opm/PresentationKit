@@ -12,7 +12,7 @@ import UIKit
 
 extension UIViewController {
     
-    /// Presents a view controller modally as if presented from another view controller, but here a new window is created with root view controller that presents the current view controller. On `dismiss(animated:, completion:)` on this instance the newly created window is destroyed and last used window becomes the `keyWindow` of the app again.
+    /// Presents a view controller modally as if presented from another view controller, but here a new window is created with root view controller that presents the current view controller. On `dismiss(animated:, completion:)` on this instance the newly created window is destroyed and last used window becomes the `keyWindow` of the app again. However, **dismissing is not working correctly with `UIViewController`s which have** `UIModalPresentationStyle.overCurrentContext` **. In that case you should call** `UIWindow.destroyPresentationKitWindow()` **to forcefully destroy the window.**
     ///
     /// - Parameters:
     ///   - animated: Pass true to animate the presentation; otherwise, pass false.
@@ -20,7 +20,9 @@ extension UIViewController {
     public func present(animated: Bool, completion: (() -> Void)?) {
         checkForAlertController()
         let newWindow = UIWindow.new
+        (newWindow.rootViewController as? RootViewController)?.lastKeyWindow = UIApplication.shared.keyWindow
         newWindow.makeKeyAndVisible()
+        
         let options = RootViewController.PresentationOptions(viewController: self, animated: animated, completion: completion)
         (newWindow.rootViewController as? RootViewController)?.presentationOptions = options
     }
@@ -51,6 +53,10 @@ class RootViewController: UIViewController {
     
     /// Someone needs to hold a strong reference to the new window so its here
     fileprivate var windowReference: UIWindow?
+    
+    /// Reference to the last key window before `PresentationKit`'s window became key window.
+    fileprivate weak var lastKeyWindow: UIWindow?
+    
     private var hasPresentedViewController = false
     fileprivate var presentationOptions: RootViewController.PresentationOptions?
 }
@@ -88,9 +94,22 @@ extension RootViewController {
     
     func dismissWindow() {
         guard hasPresentedViewController else { return }
-        windowReference?.resignKey()
+        lastKeyWindow?.makeKeyAndVisible()
         windowReference = nil
         presentationOptions = nil
+    }
+}
+
+extension UIWindow {
+    
+    /// Forcefully destroys the `UIWindow` used by `PresentationKit`. Usefull when you are presenting `UIViewController`s with `UIModalPresentationStyle.overCurrentContext` which breaks the dismiss logic of PresentationKit because it does not call `viewWillAppear` on its `presentingViewController`.
+    ///
+    /// - Returns: true if operation completes in success, false if not.
+    @discardableResult public static func destroyPresentationKitWindow() -> Bool {
+        guard let window = UIApplication.shared.windows.filter( { $0.tag == .newWindowTag }).first else { return false }
+        guard let rootController = window.rootViewController as? RootViewController else { return false }
+        rootController.dismissWindow()
+        return false
     }
 }
 
@@ -99,7 +118,7 @@ extension RootViewController {
 extension Int {
     
     /// Tag used for distinguishing PresentationKit's window from all windows of the app.
-    static fileprivate var newWindowTag: Int { return 0xdead }
+    fileprivate static let newWindowTag = 0xDEAD
 }
 
 extension UIWindow {
