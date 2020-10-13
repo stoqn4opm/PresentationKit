@@ -11,6 +11,6 @@ import UIKit
 class PresentedViewController: UIViewController {
     
     @IBAction func closePressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 }

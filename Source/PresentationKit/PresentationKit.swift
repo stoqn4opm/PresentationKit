@@ -17,7 +17,7 @@ extension UIViewController {
     /// - Parameters:
     ///   - animated: Pass true to animate the presentation; otherwise, pass false.
     ///   - completion: The completion handler, if provided, will be invoked after the presented controllers viewDidAppear: callback is invoked.
-    public func present(animated: Bool, completion: (() -> Void)?) {
+    public func present(animated: Bool, completion: (() -> Void)? = nil) {
         checkForAlertController()
         let newWindow = UIWindow.new
         (newWindow.rootViewController as? RootViewController)?.lastKeyWindow = UIApplication.shared.keyWindow
@@ -40,10 +40,11 @@ extension UIViewController {
 // MARK: - Presentation Options
 
 extension RootViewController {
+    
     struct PresentationOptions {
         let viewController: UIViewController
-        let animated:       Bool
-        let completion:    (() -> Void)?
+        let animated: Bool
+        let completion: (() -> Void)?
     }
 }
 

@@ -29,7 +29,6 @@ class ViewController: UIViewController {
             field.isSecureTextEntry = true
         }
         
-        alert.present(animated: true, completion: nil)        
+        alert.present(animated: true)        
     }
 }
-
