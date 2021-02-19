@@ -6,6 +6,8 @@
 //  Copyright © 2018 Stoyan Stoyanov. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 // MARK: - Public Interface
@@ -158,3 +160,5 @@ extension UIAlertAction {
 
 /// Class that exists only to mark wheter a `UIAlertAction` instance is properly prepared to destroy the `UIWindow` which PresentationKit uses.
 public class PAlertAction: UIAlertAction { }
+
+#endif

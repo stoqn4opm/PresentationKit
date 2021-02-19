@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		325F85692132A49A003670AF /* PresentationKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 325F85672132A49A003670AF /* PresentationKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		325F85702132A4D3003670AF /* PresentationKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325F856F2132A4D3003670AF /* PresentationKit.swift */; };
+		5E47B36925E03917008467D5 /* PresentationKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B36825E03917008467D5 /* PresentationKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		325F85642132A49A003670AF /* PresentationKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PresentationKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		325F85672132A49A003670AF /* PresentationKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresentationKit.h; sourceTree = "<group>"; };
 		325F85682132A49A003670AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		325F856F2132A4D3003670AF /* PresentationKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationKit.swift; sourceTree = "<group>"; };
+		5E47B36825E03917008467D5 /* PresentationKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationKit.swift; path = ../../Sources/PresentationKit/PresentationKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +48,8 @@
 		325F85662132A49A003670AF /* PresentationKit */ = {
 			isa = PBXGroup;
 			children = (
-				325F856F2132A4D3003670AF /* PresentationKit.swift */,
 				325F85672132A49A003670AF /* PresentationKit.h */,
+				5E47B36825E03917008467D5 /* PresentationKit.swift */,
 				325F85682132A49A003670AF /* Info.plist */,
 			);
 			path = PresentationKit;
@@ -98,7 +98,7 @@
 				TargetAttributes = {
 					325F85632132A49A003670AF = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1200;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -135,7 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				325F85702132A4D3003670AF /* PresentationKit.swift in Sources */,
+				5E47B36925E03917008467D5 /* PresentationKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
