@@ -1,9 +1,9 @@
 # PresentationKit
-![](https://img.shields.io/badge/version-1.2-brightgreen.svg)
+![](https://img.shields.io/badge/version-2.0.0-brightgreen.svg)
 
 PresentationKit is a micro iOS Dynamic Framework with the single purpose of presenting `UIViewController`'s, from places within your code where you don't have reference to app's view controller hierarchy. A nice example of use case of this library is from within other libraries that need to present an authentication flow and dismiss it on completion. 
 
-Build using Swift 4.1, Xcode 9.4.1, supports iOS 8.0+
+Build using Swift 5.3, Xcode 12.4, supports iOS 12.0+
 
 # Usage
 
@@ -14,6 +14,12 @@ Build using Swift 4.1, Xcode 9.4.1, supports iOS 8.0+
 [`modalTransitionStyle`](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621388-modaltransitionstyle) and [`modalPresentationStyle`](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621355-modalpresentationstyle) properties of `UIViewController`s are taken into account.
 
 # Installation
+
+### Swift Package Manager
+
+1. Navigate to `XCode project` > `ProjectName` > `Swift Packages` > `+ (add)`
+2. Paste the url `https://github.com/stoqn4opm/PresentationKit.git`
+3. Select the needed targets.
 
 ### Carthage Installation
 
