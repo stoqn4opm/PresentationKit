@@ -32,9 +32,9 @@ extension UIViewController {
     /// Checking whether someone is trying to present alert controller which does not have only `PAlertAction`s. Even if only one action is not of class `PAlertAction`, the execution is stopped fatalError is reached
     private func checkForAlertController() {
         guard self is UIAlertController else { return }
-        let countOfUnappropriateAlerts = (self as? UIAlertController)?.actions.filter({ !($0 is PAlertAction) }).count
-        assert(countOfUnappropriateAlerts == 0, "When presenting UIAlertController from PresentationKit, YOU HAVE TO USE UIAlertAction.AlertAction(title:, style:, handler:) so that the internally created window can be dismissed properly when executing the action handlers")
-        guard countOfUnappropriateAlerts != 0 else { return }
+        let countOfInappropriateAlerts = (self as? UIAlertController)?.actions.filter({ !($0 is PAlertAction) }).count
+        assert(countOfInappropriateAlerts == 0, "When presenting UIAlertController from PresentationKit, YOU HAVE TO USE UIAlertAction.AlertAction(title:, style:, handler:) so that the internally created window can be dismissed properly when executing the action handlers")
+        guard countOfInappropriateAlerts != 0 else { return }
         fatalError("If you are using UIAlertController with PresentationKit, you have to add PAlertActions to it instead of UIAlertActions. Get the right action with UIAlertAction.AlertAction(title:, style:, handler:)")
     }
 }
@@ -105,7 +105,7 @@ extension RootViewController {
 
 extension UIWindow {
     
-    /// Forcefully destroys the `UIWindow` used by `PresentationKit`. Usefull when you are presenting `UIViewController`s with `UIModalPresentationStyle.overCurrentContext` which breaks the dismiss logic of PresentationKit because it does not call `viewWillAppear` on its `presentingViewController`.
+    /// Forcefully destroys the `UIWindow` used by `PresentationKit`. Useful when you are presenting `UIViewController`s with `UIModalPresentationStyle.overCurrentContext` which breaks the dismiss logic of PresentationKit because it does not call `viewWillAppear` on its `presentingViewController`.
     ///
     /// - Returns: true if operation completes in success, false if not.
     @discardableResult public static func destroyPresentationKitWindow() -> Bool {
@@ -127,7 +127,14 @@ extension Int {
 extension UIWindow {
     
     static fileprivate var new: UIWindow {
-        let window = UIWindow(frame: UIScreen.main.bounds)
+        let window: UIWindow
+        
+        if #available(iOS 13, *), let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            window = UIWindow(windowScene: scene)
+        } else {
+            window = UIWindow(frame: UIScreen.main.bounds)
+        }
+        
         let rootViewController = RootViewController(nibName: nil, bundle: nil)
         rootViewController.windowReference = window
         window.rootViewController = rootViewController
@@ -158,7 +165,7 @@ extension UIAlertAction {
     }
 }
 
-/// Class that exists only to mark wheter a `UIAlertAction` instance is properly prepared to destroy the `UIWindow` which PresentationKit uses.
+/// Class that exists only to mark whether a `UIAlertAction` instance is properly prepared to destroy the `UIWindow` which PresentationKit uses.
 public class PAlertAction: UIAlertAction { }
 
 #endif

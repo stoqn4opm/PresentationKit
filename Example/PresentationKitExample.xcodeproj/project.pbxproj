@@ -3,33 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		325F857E2132A553003670AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325F857D2132A553003670AF /* AppDelegate.swift */; };
 		325F85852132A55E003670AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325F85842132A55E003670AF /* Assets.xcassets */; };
 		325F85882132A55E003670AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325F85862132A55E003670AF /* LaunchScreen.storyboard */; };
-		325F85902132A5C7003670AF /* PresentationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 325F858F2132A5C7003670AF /* PresentationKit.framework */; };
-		325F85912132A5C7003670AF /* PresentationKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 325F858F2132A5C7003670AF /* PresentationKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		325F85962132A5FD003670AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325F85932132A5FC003670AF /* ViewController.swift */; };
 		325F85972132A5FD003670AF /* PresentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325F85942132A5FC003670AF /* PresentedViewController.swift */; };
 		325F85982132A5FD003670AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325F85952132A5FC003670AF /* Main.storyboard */; };
+		5EBC324D26BD5468006583A4 /* PresentationKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5EBC324C26BD5468006583A4 /* PresentationKit */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		325F85922132A5C7003670AF /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				325F85912132A5C7003670AF /* PresentationKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		325F857A2132A553003670AF /* PresentationKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PresentationKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				325F85902132A5C7003670AF /* PresentationKit.framework in Frameworks */,
+				5EBC324D26BD5468006583A4 /* PresentationKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +46,7 @@
 				325F858F2132A5C7003670AF /* PresentationKit.framework */,
 				325F857C2132A553003670AF /* PresentationKitExample */,
 				325F857B2132A553003670AF /* Products */,
+				5EBC324B26BD5468006583A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +72,13 @@
 			path = PresentationKitExample;
 			sourceTree = "<group>";
 		};
+		5EBC324B26BD5468006583A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,13 +89,15 @@
 				325F85762132A553003670AF /* Sources */,
 				325F85772132A553003670AF /* Frameworks */,
 				325F85782132A553003670AF /* Resources */,
-				325F85922132A5C7003670AF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PresentationKitExample;
+			packageProductDependencies = (
+				5EBC324C26BD5468006583A4 /* PresentationKit */,
+			);
 			productName = PresentationKitExample;
 			productReference = 325F857A2132A553003670AF /* PresentationKitExample.app */;
 			productType = "com.apple.product-type.application";
@@ -355,6 +350,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5EBC324C26BD5468006583A4 /* PresentationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PresentationKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 325F85722132A553003670AF /* Project object */;
 }
